@@ -25,24 +25,14 @@ app.post("/register",register)
 app.post("/login",login)
 
 
-app.listen(8080 ,async() => {
 
-    try {    
+
+app.listen( process.env.PORT||5000, async()=>{
+    try {
         await connect();
-        console.log("listening port 8080")
-
-    } catch (e){
-        console.log(e.message)
+        console.log('Server Connected Success')
+    } catch (error) {
+        console.log(error)
     }
+
 })
-
-
-// app.listen(8080, async()=>{
-//     try {
-//         await connect();
-//         console.log('Server Connected Port 8080')
-//     } catch (error) {
-//         console.log(error)
-//     }
-
-// })
