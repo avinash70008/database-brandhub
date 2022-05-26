@@ -19,7 +19,7 @@ router.get("/tshirt",async(req,res)=>{
 
     let page = req.query.page
     try {
-        let tshirt = await Tshirt.find().limit(6).skip((page-1)*6).lean().exec();
+        let tshirt = await Tshirt.find().lean().exec();
         return res.status(200).send(tshirt)
 
     } catch (e) {
