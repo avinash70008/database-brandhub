@@ -25,7 +25,7 @@ app.post("/register",register)
 app.post("/login",login)
 
 
-app.listen(PORT ,async() => {
+app.listen(8080 ,async() => {
 
     try {    
         await connect();
