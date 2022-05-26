@@ -4,7 +4,7 @@ const router = express.Router();
 
 const Shirt = require("../models/shirtModel");
 
-router.post("/shirt",async(req,res)=>{
+router.post("",async(req,res)=>{
 
     try {
         let shirt = await Shirt.create(req.body);
@@ -15,7 +15,7 @@ router.post("/shirt",async(req,res)=>{
     }
 })
 
-router.get("/shirt",async(req,res)=>{
+router.get("",async(req,res)=>{
 
     try {
         let shirt = await Shirt.find().lean().exec();
@@ -26,8 +26,19 @@ router.get("/shirt",async(req,res)=>{
         return res.status(500).send(e.message)
     }
 })
+router.get("/:id",async(req,res)=>{
 
-router.patch("/shirt/:id",async(req,res)=>{
+    try {
+        let shirt = await Shirt.findById({_id:req.params.id}).lean().exec();
+        return res.status(200).send(shirt)
+
+
+    } catch (e) {
+        return res.status(500).send(e.message)
+    }
+})
+
+router.patch("/:id",async(req,res)=>{
 
     try {
         let shirt = await Shirt.findByIdAndUpdate(req.params.id , req.body ,{new : true}).lean().exec();
@@ -38,7 +49,7 @@ router.patch("/shirt/:id",async(req,res)=>{
     }
 })
 
-router.delete("/shirt/:id",async(req,res)=>{
+router.delete("/:id",async(req,res)=>{
 
     try {
         let shirt = await Shirt.findByIdAndDelete(req.params.id).lean().exec();

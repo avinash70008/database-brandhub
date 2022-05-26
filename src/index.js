@@ -13,10 +13,10 @@ require("dotenv").config()
 const connect = require("./config/db")
 
 const shirtController = require("./controllers/shirtController")
-app.use("/" , shirtController)
+app.use("/shirt" , shirtController)
 
 const tshirtController = require("./controllers/tshirtController")
-app.use("/" , tshirtController)
+app.use("/tshirt" , tshirtController)
 
 
 
